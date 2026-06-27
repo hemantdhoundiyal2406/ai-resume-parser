@@ -102,6 +102,30 @@ python app.py
 http://127.0.0.1:5000
 ```
 
+## Deploy on Render
+
+This project includes `render.yaml`, `Procfile`, and `runtime.txt`, so it can be deployed as a Python web service.
+
+1. Push the project to GitHub.
+2. Go to Render and create a new Web Service from the GitHub repository.
+3. Use these commands if Render asks:
+
+```bash
+pip install -r requirements.txt
+gunicorn app:app
+```
+
+4. Add environment variables:
+
+```text
+FLASK_SECRET_KEY=your_random_secret
+OPENAI_API_KEY=your_openai_key_optional
+OPENAI_MODEL=gpt-4o-mini
+MAX_UPLOAD_MB=10
+```
+
+If you do not add `OPENAI_API_KEY`, the local fallback parser still works.
+
 ## Sample Skills List
 
 The local parser and job matcher look for these skills:
