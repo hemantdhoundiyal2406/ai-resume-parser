@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: ai-resume-parser
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: FLASK_SECRET_KEY
+        generateValue: true
+      - key: MAX_UPLOAD_MB
+        value: 10
+      - key: OPENAI_MODEL
+        value: gpt-4o-mini
