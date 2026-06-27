@@ -16,7 +16,8 @@ from services.skill_matcher import compare_resume_to_job
 load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent
-UPLOAD_FOLDER = BASE_DIR / "uploads"
+DATA_DIR = Path(os.getenv("DATA_DIR", BASE_DIR))
+UPLOAD_FOLDER = Path(os.getenv("UPLOAD_FOLDER", DATA_DIR / "uploads"))
 ALLOWED_EXTENSIONS = {"pdf", "docx"}
 
 app = Flask(__name__)
